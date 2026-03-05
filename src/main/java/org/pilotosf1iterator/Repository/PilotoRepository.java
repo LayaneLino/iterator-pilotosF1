@@ -15,7 +15,7 @@ public class PilotoRepository {
     }
 
     private List<Piloto> interpretaArquivo() throws Exception {
-        List<Piloto> listaPilotos = new ArrayList<>();
+        List<Piloto> listaPilotos = new LinkedList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(caminhoArquivo))) {
             String linha;
             while ((linha = br.readLine()) != null) {
@@ -66,9 +66,9 @@ public class PilotoRepository {
 
     public Iterator<Piloto> getGrafo() throws Exception {
         List<Piloto> listaPilotos = interpretaArquivo();
-        HashMap<Piloto, ArrayList<Piloto>> grafo = new HashMap<>();
+        HashMap<Piloto, LinkedList<Piloto>> grafo = new HashMap<>();
         for (Piloto p : listaPilotos) {
-            grafo.put(p, new ArrayList<>());
+            grafo.put(p, new LinkedList<>());
         }
         return new IteratorGrafo(grafo);
     }

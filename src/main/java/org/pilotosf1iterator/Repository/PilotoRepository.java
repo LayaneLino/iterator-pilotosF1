@@ -47,7 +47,7 @@ public class PilotoRepository {
         List<Piloto> listaPilotos = interpretaArquivo();
         int total = listaPilotos.size();
 
-        int colunas = 10;
+        int colunas = 7;
         int linhas = (int) Math.ceil((double) total / colunas);
 
         Piloto[][] matriz = new Piloto[linhas][colunas];

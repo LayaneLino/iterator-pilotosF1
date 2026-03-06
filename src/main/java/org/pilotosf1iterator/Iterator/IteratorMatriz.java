@@ -14,11 +14,15 @@ public class IteratorMatriz implements Iterator<Piloto> {
 
     @Override
     public boolean hasNext() {
-        int l = linha, c = coluna;
-        while (l < matriz.length) {
-            if (matriz[l][c] != null) return true;
-            c++;
-            if (c >= matriz[l].length) { c = 0; l++; }
+        while (linha < matriz.length) {
+            if (matriz[linha][coluna] != null){
+                return true;
+            }
+            coluna++;
+            if (coluna >= matriz[linha].length) {
+                coluna = 0;
+                linha++;
+            }
         }
         return false;
     }
@@ -30,11 +34,17 @@ public class IteratorMatriz implements Iterator<Piloto> {
             if (matriz[linha][coluna] != null) {
                 Piloto p = matriz[linha][coluna];
                 coluna++;
-                if (coluna >= matriz[linha].length) { coluna = 0; linha++; }
+                if (coluna >= matriz[linha].length) {
+                    coluna = 0;
+                    linha++;
+                }
                 return p;
             }
             coluna++;
-            if (coluna >= matriz[linha].length) { coluna = 0; linha++; }
+            if (coluna >= matriz[linha].length) {
+                coluna = 0;
+                linha++;
+            }
         }
         return null;
     }

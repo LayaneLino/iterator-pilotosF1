@@ -2,7 +2,7 @@ package org.pilotosf1iterator.Model;
 
 public class Piloto implements Comparable<Piloto> {
     private final int matricula;
-    private final String nome;
+    private String nome;
     private final String pais;
     private final int idade;
     private final String equipe;

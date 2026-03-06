@@ -5,23 +5,23 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class IteratorFila implements Iterator<Piloto> {
-    private final LinkedList<Piloto> dados;
+    private final LinkedList<Piloto> fila;
     private int pos;
 
-    public IteratorFila(LinkedList<Piloto> dados) {
-        this.dados = dados;
+    public IteratorFila(LinkedList<Piloto> fila) {
+        this.fila = fila;
         this.pos = 0;
     }
 
     @Override
     public boolean hasNext() {
-        return pos < dados.size();
+        return pos < fila.size();
     }
 
     @Override
     public Piloto next() {
         if (!hasNext()) throw new java.util.NoSuchElementException();
-        return dados.get(pos++);
+        return fila.get(pos++);
     }
 
 }

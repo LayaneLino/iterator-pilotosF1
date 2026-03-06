@@ -10,11 +10,8 @@ public class IteratorGrafo implements Iterator<Piloto> {
     private final LinkedList<Piloto> chaves;
 
     public IteratorGrafo(HashMap<Piloto, ?> grafo) {
-        if (grafo != null) {
-            this.chaves = new LinkedList<>(grafo.keySet());
-        } else {
-            this.chaves = new LinkedList<>();
-        }    }
+        this.chaves = new LinkedList<>(grafo.keySet());
+    }
 
     @Override
     public boolean hasNext() {

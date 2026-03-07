@@ -12,8 +12,8 @@
         <Button style="-fx-background-color: #f9cec9;" minWidth="80.0" text="Pilha" onAction="#botaoPilha" />
         <Button style="-fx-background-color: #c9f9ce;" minWidth="80.0" text="Fila" onAction="#botaoFila" />
         <Button style="-fx-background-color: #f5f9c9;" minWidth="80.0" text="Árvore" onAction="#botaoArvore" />
-        <Button style="-fx-background-color: #fbdbe8;" minWidth="80.0" text="Matriz" onAction="#botaoMatriz" />
-        <Button style="-fx-background-color: #c9ddf9;" minWidth="80.0" text="Grafo" onAction="#botaoGrafo" />
+        <Button style="-fx-background-color: #fbdbe8;" minWidth="80.0" text="Prioridade" onAction="#botaoPrioridade" />
+        <Button style="-fx-background-color: #c9ddf9;" minWidth="80.0" text="Hash" onAction="#botaoHash" />
     </HBox>
 
     <TableView fx:id="tabelaPilotos" VBox.vgrow="ALWAYS">

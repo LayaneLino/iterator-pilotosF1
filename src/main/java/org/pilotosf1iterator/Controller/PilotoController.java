@@ -86,18 +86,18 @@ public class PilotoController{
     }
 
     @FXML
-    void botaoMatriz() {
+    void botaoPrioridade() {
         try {
-            preencherTabela(repository.getMatriz());
+            preencherTabela(repository.getPrioridade());
         } catch (Exception e) {
             erro("Erro ao carregar Matriz: " + e.getMessage());
         }
     }
 
     @FXML
-    void botaoGrafo() {
+    void botaoHash() {
         try {
-            preencherTabela(repository.getGrafo());
+            preencherTabela(repository.getHash());
         } catch (Exception e) {
             erro("Erro ao carregar Grafo: " + e.getMessage());
         }

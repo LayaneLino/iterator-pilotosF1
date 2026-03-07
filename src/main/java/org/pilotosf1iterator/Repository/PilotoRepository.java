@@ -14,8 +14,8 @@ public class PilotoRepository {
         this.caminhoArquivo = caminho;
     }
 
-    private List<Piloto> interpretaArquivo() throws Exception {
-        List<Piloto> listaPilotos = new LinkedList<>();
+    private LinkedList<Piloto> interpretaArquivo() throws Exception {
+        LinkedList<Piloto> listaPilotos = new LinkedList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(caminhoArquivo))) {
             String linha;
             while ((linha = br.readLine()) != null) {
@@ -34,7 +34,7 @@ public class PilotoRepository {
     }
 
     public Iterator<Piloto> getFila() throws Exception {
-        LinkedList<Piloto> fila = new LinkedList<>(interpretaArquivo());
+        LinkedList<Piloto> fila = interpretaArquivo();
         return new IteratorFila(fila);
     }
 
@@ -43,33 +43,19 @@ public class PilotoRepository {
         return new IteratorArvore(arvore);
     }
 
-    public Iterator<Piloto> getMatriz() throws Exception {
-        List<Piloto> listaPilotos = interpretaArquivo();
-        int total = listaPilotos.size();
-
-        int colunas = 7;
-        int linhas = (int) Math.ceil((double) total / colunas);
-
-        Piloto[][] matriz = new Piloto[linhas][colunas];
-
-        int l = 0, c = 0;
-        for (Piloto p : listaPilotos) {
-            matriz[l][c] = p;
-            c++;
-            if (c == colunas) {
-                c = 0;
-                l++;
-            }
-        }
-        return new IteratorMatriz(matriz);
+    public Iterator<Piloto> getPrioridade() throws Exception {
+        Comparator<Piloto> porPontos = (p1, p2) -> Integer.compare(p2.getPontos(), p1.getPontos());
+        PriorityQueue<Piloto> filaPrioridade = new PriorityQueue<>(porPontos);
+        filaPrioridade.addAll(interpretaArquivo());
+        return new IteratorPrioridade(filaPrioridade);
     }
 
-    public Iterator<Piloto> getGrafo() throws Exception {
-        List<Piloto> listaPilotos = interpretaArquivo();
-        HashMap<Piloto, LinkedList<Piloto>> grafo = new HashMap<>();
-        for (Piloto p : listaPilotos) {
-            grafo.put(p, new LinkedList<>());
+    public Iterator<Piloto> getHash() throws Exception {
+        HashMap<Piloto, LinkedList<Piloto>> hash = new HashMap<>();
+        for (Piloto p : interpretaArquivo()) {
+            hash.put(p, new LinkedList<>());
         }
-        return new IteratorGrafo(grafo);
+        return new IteratorHash(hash);
     }
+
 }

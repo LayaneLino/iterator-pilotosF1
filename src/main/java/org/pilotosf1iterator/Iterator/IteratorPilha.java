@@ -20,7 +20,6 @@ public class IteratorPilha implements Iterator<Piloto> {
 
     @Override
     public Piloto next() {
-        if (!hasNext()) throw new java.util.NoSuchElementException();
         return pilha.get(pos--);
     }
 }

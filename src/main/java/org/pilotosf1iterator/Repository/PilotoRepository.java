@@ -8,15 +8,15 @@ import java.io.FileReader;
 import java.util.*;
 
 public class PilotoRepository {
-    private final String caminhoArquivo;
+    private final String nomeArquivo;
 
-    public PilotoRepository(String caminho) {
-        this.caminhoArquivo = caminho;
+    public PilotoRepository(String nomeArquivo) {
+        this.nomeArquivo = nomeArquivo;
     }
 
     private LinkedList<Piloto> interpretaArquivo() throws Exception {
         LinkedList<Piloto> listaPilotos = new LinkedList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(caminhoArquivo))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(nomeArquivo))) {
             String linha;
             while ((linha = br.readLine()) != null) {
                 if (!linha.trim().isEmpty()) {

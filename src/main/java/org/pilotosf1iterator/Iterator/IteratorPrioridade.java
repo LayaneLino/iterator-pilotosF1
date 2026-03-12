@@ -1,6 +1,7 @@
 package org.pilotosf1iterator.Iterator;
 
 import org.pilotosf1iterator.Model.Piloto;
+
 import java.util.Iterator;
 import java.util.PriorityQueue;
 
@@ -21,4 +22,5 @@ public class IteratorPrioridade implements Iterator<Piloto> {
     public Piloto next() {
         return copiaFila.poll();
     }
+
 }

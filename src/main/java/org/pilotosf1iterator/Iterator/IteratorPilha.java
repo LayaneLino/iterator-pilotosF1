@@ -1,6 +1,7 @@
 package org.pilotosf1iterator.Iterator;
 
 import org.pilotosf1iterator.Model.Piloto;
+
 import java.util.Iterator;
 import java.util.Stack;
 
@@ -22,4 +23,5 @@ public class IteratorPilha implements Iterator<Piloto> {
     public Piloto next() {
         return pilha.get(pos--);
     }
+
 }

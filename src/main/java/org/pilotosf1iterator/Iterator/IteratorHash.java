@@ -8,8 +8,8 @@ import java.util.Iterator;
 public class IteratorHash implements Iterator<Piloto> {
     private final Iterator<Piloto> iterator;
 
-    public IteratorHash(HashMap<Piloto, ?> grafo) {
-        this.iterator = grafo.keySet().iterator();
+    public IteratorHash(HashMap<Piloto, ?> hash) {
+        this.iterator = hash.keySet().iterator();
     }
 
     @Override
@@ -21,4 +21,5 @@ public class IteratorHash implements Iterator<Piloto> {
     public Piloto next() {
         return iterator.next();
     }
+
 }

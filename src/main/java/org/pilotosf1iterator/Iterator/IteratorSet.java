@@ -2,14 +2,14 @@ package org.pilotosf1iterator.Iterator;
 
 import org.pilotosf1iterator.Model.Piloto;
 
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Set;
 
-public class IteratorHash implements Iterator<Piloto> {
+public class IteratorSet implements Iterator<Piloto> {
     private final Iterator<Piloto> iterator;
 
-    public IteratorHash(HashMap<Piloto, ?> hash) {
-        this.iterator = hash.keySet().iterator();
+    public IteratorSet(Set<Piloto> set) {
+        this.iterator = set.iterator();
     }
 
     @Override

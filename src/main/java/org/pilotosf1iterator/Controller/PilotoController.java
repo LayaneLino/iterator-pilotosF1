@@ -97,7 +97,7 @@ public class PilotoController{
     @FXML
     void botaoHash() {
         try {
-            preencherTabela(repository.getHash());
+            preencherTabela(repository.getSet());
         } catch (Exception e) {
             erro("Erro ao carregar Grafo: " + e.getMessage());
         }

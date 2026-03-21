@@ -14,17 +14,22 @@ public class PilotoRepository {
         this.nomeArquivo = nomeArquivo;
     }
 
-    private LinkedList<Piloto> interpretaArquivo() throws Exception {
-        LinkedList<Piloto> listaPilotos = new LinkedList<>();
+    private List<Piloto> cachePilotos;
+
+    private List<Piloto> interpretaArquivo() throws Exception {
+        if (cachePilotos != null) return cachePilotos;
+
+        cachePilotos = new LinkedList<>();
+
         try (BufferedReader br = new BufferedReader(new FileReader(nomeArquivo))) {
             String linha;
             while ((linha = br.readLine()) != null) {
                 if (!linha.trim().isEmpty()) {
-                    listaPilotos.add(new Piloto(linha));
+                    cachePilotos.add(new Piloto(linha));
                 }
             }
         }
-        return listaPilotos;
+        return cachePilotos;
     }
 
     public Iterator<Piloto> getPilha() throws Exception {
@@ -34,13 +39,11 @@ public class PilotoRepository {
     }
 
     public Iterator<Piloto> getFila() throws Exception {
-        LinkedList<Piloto> fila = interpretaArquivo();
-        return new IteratorFila(fila);
+        return new IteratorFila(new LinkedList<>(interpretaArquivo()));
     }
 
     public Iterator<Piloto> getArvore() throws Exception {
-        TreeSet<Piloto> arvore = new TreeSet<>(interpretaArquivo());
-        return new IteratorArvore(arvore);
+        return new IteratorArvore(new TreeSet<>(interpretaArquivo()));
     }
 
     public Iterator<Piloto> getPrioridade() throws Exception {
@@ -50,12 +53,9 @@ public class PilotoRepository {
         return new IteratorPrioridade(filaPrioridade);
     }
 
-    public Iterator<Piloto> getHash() throws Exception {
-        HashMap<Piloto, LinkedList<Piloto>> hash = new HashMap<>();
-        for (Piloto p : interpretaArquivo()) {
-            hash.put(p, new LinkedList<>());
-        }
-        return new IteratorHash(hash);
+    public Iterator<Piloto> getSet() throws Exception {
+        Set<Piloto> hashSet = new HashSet<>(interpretaArquivo());
+        return new IteratorSet(hashSet);
     }
 
 }
